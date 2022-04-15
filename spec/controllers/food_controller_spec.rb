@@ -10,13 +10,13 @@ RSpec.describe FoodsController do
 
     context 'without params[:letter]' do
       it '[C.3]populates an array of all foods' do
-        food = create(:food)
+        food = FactoryBot.create(:food)
         get :show, params: { id: food }
         expect(assigns(:food)).to eq food
       end
 
       it '[C.4]renders the :index template' do
-        food = create(:food)
+        food = FactoryBot.create(:food)
         get :show, params: { id: food }
         expect(response).to render_template :show
       end
