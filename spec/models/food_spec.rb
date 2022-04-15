@@ -16,8 +16,8 @@ RSpec.describe Food, type: :model do
   end
 
   it '[4] is invalid with a duplicate name' do
-    food1 = FactoryBot.create(:food, name: 'Nasi Uduk')
-    food2 = FactoryBot.build(:food, name: 'Nasi Uduk')
+    food1 = FactoryBot.create(:food, name: 'Nasi Uduk') # persist in database
+    food2 = FactoryBot.build(:food, name: 'Nasi Uduk') # dont persist in database
 
     food2.valid?
 
@@ -31,7 +31,7 @@ RSpec.describe Food, type: :model do
         food2 = FactoryBot.create(:food, name: 'Nasi Bakar')
         food3 = FactoryBot.create(:food, name: 'Nasi Gila')
 
-        expect(Food.by_letter('G')).to include([food3])
+        expect(Food.by_letter('G')).to eq([food3])
       end
     end
   end

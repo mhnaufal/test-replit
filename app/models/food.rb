@@ -1,5 +1,7 @@
 class Food < ApplicationRecord
+  validates :name, presence: true, uniqueness: true
+  
   def self.by_letter(letter)
-    where('name like ?', "#{letter}%").order(:name)
+    where('name LIKE ?', "%#{letter}%")
   end
 end
